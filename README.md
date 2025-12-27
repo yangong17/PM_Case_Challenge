@@ -147,9 +147,7 @@ The `NavigationManager` class handles:
 
 For technical issues or questions:
 
-- **PMI-LA Community**: Discord channel
-- **Office Hours**: Tuesday & Thursday, 6-8 PM PST
-- **Email**: outreach@pmi-la.org
+- **Email**: yzong17@gmail.com
 
 ## 📝 License
 
