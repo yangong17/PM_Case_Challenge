@@ -1639,3 +1639,21 @@ body {
     font-size: 1.25rem;
   }
 }
+
+/* ==========================================================================
+   PDF EMBED
+   ========================================================================== */
+.pdf-container {
+  margin-top: var(--space-4);
+}
+
+.pdf-container iframe {
+  box-shadow: var(--shadow-md);
+}
+
+.pdf-fallback {
+  text-align: center;
+  margin-top: var(--space-3);
+  font-size: 0.9rem;
+  color: var(--gray-500);
+}
