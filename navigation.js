@@ -511,26 +511,6 @@ async function initializeApp() {
         const navHtml = await navResponse.text();
         document.getElementById('nav-placeholder').innerHTML = navHtml;
         
-        // Load countdown widget
-        const headerResponse = await fetch('header.html');
-        const headerHtml = await headerResponse.text();
-        let countdownContainer = document.querySelector('.right-sidebar');
-        if (!countdownContainer) {
-            countdownContainer = document.createElement('div');
-            countdownContainer.className = 'right-sidebar';
-            document.body.appendChild(countdownContainer);
-        }
-        countdownContainer.innerHTML = headerHtml;
-
-        // Load required scripts in order
-        await loadScript('config.js');
-        await loadScript('countdown.js');
-
-        // Initialize countdown after all scripts are loaded
-        if (typeof updateCountdown === 'function') {
-            updateCountdown();
-        }
-
         // Highlight current page in navigation
         highlightCurrentPage();
     } catch (error) {
