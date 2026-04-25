@@ -488,39 +488,6 @@ navStyles.textContent = `
 
 document.head.appendChild(navStyles);
 
-// Function to load external script
-function loadScript(src) {
-    return new Promise((resolve, reject) => {
-        if (document.querySelector(`script[src="${src}"]`)) {
-            resolve(); // Script already loaded
-            return;
-        }
-        const script = document.createElement('script');
-        script.src = src;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.body.appendChild(script);
-    });
-}
-
-// Initialize all components
-async function initializeApp() {
-    try {
-        // Load navigation
-        const navResponse = await fetch('nav.html');
-        const navHtml = await navResponse.text();
-        document.getElementById('nav-placeholder').innerHTML = navHtml;
-        
-        // Highlight current page in navigation
-        highlightCurrentPage();
-    } catch (error) {
-        console.error('Error initializing app:', error);
-    }
-}
-
-// Start initialization when DOM is ready
-document.addEventListener('DOMContentLoaded', initializeApp);
-
 // Initialize navigation system
 const navigationManager = new NavigationManager();
 
