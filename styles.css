@@ -248,12 +248,12 @@ body {
    ========================================================================== */
 .main-content {
   margin-left: var(--sidebar-width);
-  margin-right: 280px;
+  margin-right: 0;
   padding: 88px 64px 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: calc(100% - 560px);
+  width: calc(100% - var(--sidebar-width));
 }
 
 @media (max-width: 1024px) {
@@ -308,10 +308,7 @@ body {
   max-width: var(--content-max-width);
 }
 
-.main-content section:hover {
-  box-shadow: var(--shadow-md);
-  border-color: var(--border);
-}
+/* Sections aren't interactive — no hover motion */
 
 /* Internal headings */
 .main-content h2 {
@@ -1061,11 +1058,12 @@ body {
   display: inline-block;
 }
 
-/* Italic emphasis in hero — Fraunces italic (no longer used in hero, kept for elsewhere) */
+/* Italic emphasis in hero — Fraunces italic gives editorial voice */
 .main-content > h1 em,
 .main-content > h1 .italic {
-  font-style: normal;
-  color: inherit;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-dark);
 }
 
 /* Stats strip — editorial numerals */
@@ -1212,3 +1210,287 @@ body {
   .editorial-footer { grid-template-columns: 1fr; }
   .editorial-footer .footer-meta { text-align: left; }
 }
+
+/* ==========================================================================
+   HERO IMAGE — editorial feature shot
+   ========================================================================== */
+.hero-feature {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 0 40px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+  background: var(--bg-soft);
+  position: relative;
+}
+
+.hero-feature img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.hero-feature .hero-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32px 28px 20px;
+  background: linear-gradient(transparent, rgba(20, 14, 14, 0.55));
+  color: #fff;
+  font-family: var(--font-family-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+/* ==========================================================================
+   HERO CTA BAND
+   ========================================================================== */
+.hero-cta {
+  width: 100%;
+  max-width: var(--content-max-width);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 0 56px;
+  padding: 0;
+}
+
+.hero-cta .button { padding: 14px 28px; }
+
+.hero-cta .button.secondary {
+  background: transparent;
+  color: var(--accent-dark) !important;
+  border: 1px solid var(--border-strong) !important;
+}
+
+.hero-cta .button.secondary:hover {
+  background: var(--bg-soft);
+  border-color: var(--accent) !important;
+  color: var(--accent-dark) !important;
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   CHAMPIONS FEATURE CARD — promoted from accordion
+   ========================================================================== */
+.champions-feature {
+  width: 100%;
+  max-width: var(--content-max-width);
+  background: var(--bg-tinted);
+  border: 1px solid var(--accent-tint);
+  border-radius: var(--radius-xl);
+  padding: 40px 44px;
+  margin: 0 0 40px;
+  box-shadow: var(--shadow-sm);
+}
+
+.champions-feature .champions-eyebrow {
+  font-family: var(--font-family-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.champions-feature h2 {
+  font-family: var(--font-family-display);
+  color: var(--heading);
+  font-size: 1.9rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+
+.champions-feature h2 em { font-style: italic; color: var(--accent-dark); font-weight: 400; }
+
+.champions-feature .champions-lede {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 56ch;
+}
+
+.champions-feature .winners-list { margin: 0 0 24px; }
+
+.champions-feature .winner-entry {
+  background: var(--bg-elevated);
+}
+
+@media (max-width: 600px) {
+  .champions-feature { padding: 28px 24px; }
+  .champions-feature h2 { font-size: 1.5rem; }
+}
+
+/* Honorable mentions — inside Champions */
+.honorable-mentions { margin-top: 28px; }
+
+.honorable-eyebrow {
+  font-family: var(--font-family-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.honorable-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.honorable-entry {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+}
+
+.honorable-category {
+  font-family: var(--font-family-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.honorable-entry strong { font-size: 0.95rem; color: var(--heading); font-weight: 700; }
+.honorable-entry .winner-school { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+.honorable-entry .winner-members { font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
+
+@media (max-width: 768px) {
+  .honorable-grid { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   FINALISTS — full cohort directory
+   ========================================================================== */
+.finalists-feature {
+  width: 100%;
+  max-width: var(--content-max-width);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 40px 44px;
+  margin: 0 0 40px;
+  box-shadow: var(--shadow-sm);
+}
+
+.finalists-eyebrow {
+  font-family: var(--font-family-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.finalists-feature h2 {
+  font-family: var(--font-family-display);
+  color: var(--heading);
+  font-size: 1.7rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+
+.finalists-feature h2 em { font-style: italic; color: var(--accent-dark); font-weight: 400; }
+
+.finalists-feature .finalists-lede {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 28px;
+  max-width: 60ch;
+}
+
+.school-group { margin-bottom: 24px; }
+.school-group:last-child { margin-bottom: 0; }
+
+.school-group-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 0 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border-light);
+  gap: 16px;
+}
+
+.school-name {
+  font-family: var(--font-family-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--heading);
+}
+
+.school-count {
+  font-family: var(--font-family-sans);
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+
+.finalist-teams {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 24px;
+}
+
+.finalist-team {
+  padding: 10px 0;
+}
+
+.finalist-team strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--heading);
+  font-weight: 700;
+  margin-bottom: 4px;
+  letter-spacing: -0.005em;
+}
+
+.finalist-members {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .finalists-feature { padding: 28px 24px; }
+  .finalists-feature h2 { font-size: 1.4rem; }
+  .finalist-teams { grid-template-columns: 1fr; gap: 8px; }
+  .school-group-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+}
+
+/* Continuous editorial body — no card chrome on index narrative */
+.main-content section.index-narrative {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  overflow: visible;
+  margin-bottom: 0;
+}
+
+.main-content section.index-narrative + section.index-narrative {
+  margin-top: 16px;
+}
+
+.index-narrative .section-content h2:first-child { margin-top: 0; }
