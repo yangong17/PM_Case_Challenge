@@ -1044,13 +1044,6 @@ body {
   padding: 0;
 }
 
-.eyebrow::before {
-  content: '';
-  width: 28px;
-  height: 1px;
-  background: var(--accent);
-  display: inline-block;
-}
 
 .eyebrow .dot {
   width: 5px; height: 5px; border-radius: 50%;
